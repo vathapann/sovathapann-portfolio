@@ -18,21 +18,24 @@ export function Contact() {
 
         <div className="flex justify-center gap-6 flex-wrap">
           <a
-            href="#"
+            href="https://github.com/vathapann"
+            target="_blank"
             className="flex items-center gap-2 px-6 py-3 bg-slate-800 hover:bg-slate-700 rounded-full transition-colors text-white"
           >
             <Github className="w-5 h-5" />
             <span>GitHub</span>
           </a>
           <a
-            href="#"
+            href="https://www.linkedin.com/in/sovatha-pann-a96834100/"
+            target="_blank"
             className="flex items-center gap-2 px-6 py-3 bg-blue-700 hover:bg-blue-600 rounded-full transition-colors text-white"
           >
             <Linkedin className="w-5 h-5" />
             <span>LinkedIn</span>
           </a>
           <a
-            href="mailto:student@uts.edu.au"
+            href="mailto:sovathapann@gmail.com"
+            target="_blank"
             className="flex items-center gap-2 px-6 py-3 bg-slate-800 hover:bg-slate-700 rounded-full transition-colors text-white"
           >
             <Mail className="w-5 h-5" />

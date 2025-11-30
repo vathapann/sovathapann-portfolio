@@ -1,0 +1,14 @@
+version: '3.9'
+
+services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx_proxy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - /var/www/sovathapann.site:/var/www/sovathapann.site   # <-- NEW
+    network_mode: "host"
+    restart: unless-stopped

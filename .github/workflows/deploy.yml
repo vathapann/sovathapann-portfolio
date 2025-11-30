@@ -1,0 +1,88 @@
+name: Deploy portfolio to sovathapann.site
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build project
+        run: npm run build
+
+      - name: Upload Nginx config + compose file
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          source: "deploy/nginx/*"
+          target: "/opt/nginx"
+
+      - name: Prepare server (folder + nginx docker)
+        uses: appleboy/ssh-action@v0.1.7
+        with: 
+            host: ${{ secrets.SERVER_HOST }}
+            username: ${{ secrets.SERVER_USER }}
+            key: ${{ secrets.SERVER_SSH_KEY }}
+            script: |
+                set -e
+                
+                NGINX_COMPOSE_DIR="/opt/nginx"
+                WEB_ROOT="/var/www/sovathapann.site"
+                NGINX_CONTAINER="nginx_proxy"
+
+                echo ">>> Ensuring /opt/nginx exists"
+                if [ ! -d "$NGINX_COMPOSE_DIR" ]; then
+                sudo mkdir -p "$NGINX_COMPOSE_DIR"
+                fi
+
+                echo ">>> Ensuring /var/www/sovathapann.site exists"
+                if [ ! -d "$WEB_ROOT" ]; then
+                sudo mkdir -p "$WEB_ROOT"
+                sudo chown -R $USER:$USER "$WEB_ROOT"
+                fi
+
+                echo ">>> Starting/Updating Nginx Docker Compose"
+                cd "$NGINX_COMPOSE_DIR"
+                docker compose up -d --build
+
+      # Copy dist to the server
+      - name: Copy dist to server
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          source: "dist/*"
+          target: "/var/www/sovathapann.site"
+
+      # 4) Reload nginx inside the container
+      - name: Reload nginx inside container
+        uses: appleboy/ssh-action@v0.1.7
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: |
+            set -e
+            NGINX_CONTAINER="nginx_proxy"
+
+            echo ">>> Testing Nginx config"
+            docker exec "$NGINX_CONTAINER" nginx -t
+
+            echo ">>> Reloading Nginx"
+            docker exec "$NGINX_CONTAINER" nginx -s reload
