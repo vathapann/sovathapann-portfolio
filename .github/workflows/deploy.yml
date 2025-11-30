@@ -69,7 +69,7 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           source: "dist/*"
-          target: "/var/www/sovathapann.site"
+          target: "/var/www/sovathapann.site/"
 
       # 4) Reload nginx inside the container
       - name: Reload nginx inside container
