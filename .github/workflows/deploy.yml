@@ -41,11 +41,11 @@ jobs:
             script: |
                 set -e
                 
-                NGINX_COMPOSE_DIR="/opt/deploy/nginx"
+                NGINX_COMPOSE_DIR="/opt/nginx/deploy"
                 WEB_ROOT="/var/www/sovathapann.site"
                 NGINX_CONTAINER="nginx_proxy"
 
-                echo ">>> Ensuring /opt/deploy/nginx exists"
+                echo ">>> Ensuring /opt/nginx/deploy exists"
                 if [ ! -d "$NGINX_COMPOSE_DIR" ]; then
                 sudo mkdir -p "$NGINX_COMPOSE_DIR"
                 fi
@@ -57,6 +57,7 @@ jobs:
                 fi
 
                 echo ">>> Starting/Updating Nginx Docker Compose"
+                echo ">>> Navigating to $NGINX_COMPOSE_DIR"
                 cd "$NGINX_COMPOSE_DIR"
                 docker compose up -d --build
 
