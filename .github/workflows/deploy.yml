@@ -41,11 +41,11 @@ jobs:
             script: |
                 set -e
                 
-                NGINX_COMPOSE_DIR="/opt/nginx"
+                NGINX_COMPOSE_DIR="/opt/deploy/nginx"
                 WEB_ROOT="/var/www/sovathapann.site"
                 NGINX_CONTAINER="nginx_proxy"
 
-                echo ">>> Ensuring /opt/nginx exists"
+                echo ">>> Ensuring /opt/deploy/nginx exists"
                 if [ ! -d "$NGINX_COMPOSE_DIR" ]; then
                 sudo mkdir -p "$NGINX_COMPOSE_DIR"
                 fi
