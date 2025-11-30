@@ -88,3 +88,4 @@ jobs:
 
             echo ">>> Reloading Nginx"
             docker exec "$NGINX_CONTAINER" nginx -s reload
+            
