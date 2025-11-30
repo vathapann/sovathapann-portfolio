@@ -59,7 +59,7 @@ jobs:
                 echo ">>> Starting/Updating Nginx Docker Compose"
                 echo ">>> Navigating to $NGINX_COMPOSE_DIR"
                 cd "$NGINX_COMPOSE_DIR"
-                docker compose up -d --build
+                docker compose down && docker compose up -d --build
 
       # Copy dist to the server
       - name: Copy dist to server
