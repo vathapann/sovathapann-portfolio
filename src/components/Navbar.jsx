@@ -15,7 +15,7 @@ export function Navbar() {
           <Link to="/" className="flex items-center gap-2">
             <Terminal className="w-6 h-6 text-blue-500" />
             <span className="font-bold text-xl tracking-tighter">
-              SOVATHAPANN<span className="text-blue-500">.COM</span>
+              SOVATHAPANN<span className="text-blue-500">.SITE</span>
             </span>
           </Link>
 
