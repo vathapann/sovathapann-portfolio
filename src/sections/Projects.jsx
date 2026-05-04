@@ -183,3 +183,6 @@ export function Projects() {
     </section>
   );
 }
+
+
+//TODO: add timeline for CV (https://github.com/Digital-Humanities-Toolkit/timeline-builder)

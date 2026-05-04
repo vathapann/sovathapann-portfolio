@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { getEntrySlug } from "../utils/journal.js";
 
 const formatViews = (views) =>
   typeof views === "number" ? views.toLocaleString() : views;
@@ -34,9 +35,10 @@ export function JournalPage({ entries = [] }) {
         ) : (
           <div className="grid md:grid-cols-2 gap-6">
             {entries.map((entry) => (
-              <article
+              <Link
                 key={entry.title}
-                className="bg-slate-900/70 border border-slate-800 rounded-xl p-5 hover:border-blue-500/40 transition-colors"
+                to={`/journal/${getEntrySlug(entry)}`}
+                className="group block bg-slate-900/70 border border-slate-800 rounded-xl p-5 hover:border-blue-500/40 transition-colors"
               >
                 <div className="flex items-start justify-between gap-3">
                   <div>
@@ -45,7 +47,7 @@ export function JournalPage({ entries = [] }) {
                         {entry.date}
                       </p>
                     )}
-                    <h3 className="text-lg font-semibold text-white leading-snug">
+                    <h3 className="text-lg font-semibold text-white leading-snug group-hover:text-blue-200 transition-colors">
                       {entry.title}
                     </h3>
                   </div>
@@ -55,7 +57,9 @@ export function JournalPage({ entries = [] }) {
                     </span>
                   )}
                 </div>
-                <p className="text-sm text-slate-400 mt-3">{entry.description}</p>
+                <p className="text-sm text-slate-400 mt-3">
+                  {entry.description}
+                </p>
                 <div className="text-xs text-slate-500 mt-4 flex gap-4 flex-wrap">
                   {entry.views != null && (
                     <span>{formatViews(entry.views)} views</span>
@@ -63,7 +67,7 @@ export function JournalPage({ entries = [] }) {
                   {entry.minutes && <span>{entry.minutes} min read</span>}
                   {entry.date && <span>{entry.date}</span>}
                 </div>
-              </article>
+              </Link>
             ))}
           </div>
         )}

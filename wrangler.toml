@@ -1,0 +1,7 @@
+name = "sovathapann-portfolio"
+pages_build_output_dir = "./dist"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "sovathapann-site-db"
+database_id = "99228afb-fc37-4769-9667-93cb0c8065d8"

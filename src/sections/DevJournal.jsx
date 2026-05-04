@@ -1,5 +1,8 @@
 // src/sections/DevJournal.jsx
 
+import { Link } from "react-router-dom";
+import { getEntrySlug } from "../utils/journal.js";
+
 const formatViews = (views) =>
   typeof views === "number" ? views.toLocaleString() : views;
 
@@ -28,9 +31,10 @@ export function DevJournal({ entries = [] }) {
             <p className="text-sm text-slate-500">New posts coming soon.</p>
           ) : (
             entries.map((entry) => (
-              <article
+              <Link
                 key={entry.title}
-                className="bg-slate-900/70 border border-slate-800 rounded-xl p-4"
+                to={`/journal/${getEntrySlug(entry)}`}
+                className="block bg-slate-900/70 border border-slate-800 rounded-xl p-4 hover:border-blue-500/40 transition-colors"
               >
                 <h3 className="text-lg font-semibold text-white">
                   {entry.title}
@@ -45,7 +49,7 @@ export function DevJournal({ entries = [] }) {
                     <span>{formatViews(entry.views)} views</span>
                   )}
                 </div>
-              </article>
+              </Link>
             ))
           )}
         </div>

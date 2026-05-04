@@ -8,9 +8,11 @@ import { DeployGuide } from "./sections/DeployGuide.jsx";
 import { DevJournal } from "./sections/DevJournal.jsx";
 import { Contact } from "./sections/Contact.jsx";
 import { JournalPage } from "./pages/Journal.jsx";
+import { JournalEntryPage } from "./pages/JournalEntry.jsx";
 import { Projects } from "./sections/Projects.jsx";
 import { deployGuideSteps as localDeployGuideSteps } from "./data/deployGuideSteps.js";
 import { journalEntries as localJournalEntries } from "./data/journalEntries.js";
+import { mapPostToEntry } from "./utils/journal.js";
 
 function ScrollToHash() {
   const { hash, pathname } = useLocation();
@@ -39,18 +41,33 @@ function App() {
   useEffect(() => {
     const loadContent = async () => {
       try {
-        const response = await fetch("/content");
-        if (!response.ok) throw new Error("Failed to fetch content");
-        const data = await response.json();
+        // Load deploy guide + fallback journal entries
+        const contentResponse = await fetch("/content");
+        if (!contentResponse.ok) throw new Error("Failed to fetch content");
+        const contentData = await contentResponse.json();
 
-        if (Array.isArray(data.deployGuideSteps)) {
-          setDeployGuideSteps(data.deployGuideSteps);
+        if (Array.isArray(contentData.deployGuideSteps)) {
+          setDeployGuideSteps(contentData.deployGuideSteps);
         }
-        if (Array.isArray(data.journalEntries)) {
-          setJournalEntries(data.journalEntries);
+        if (Array.isArray(contentData.journalEntries)) {
+          setJournalEntries(contentData.journalEntries);
         }
       } catch (error) {
         console.warn("Falling back to local content", error);
+      }
+
+      try {
+        // Prefer live posts from D1
+        const postsResponse = await fetch("/posts");
+        if (postsResponse.ok) {
+          const postsData = await postsResponse.json();
+          if (Array.isArray(postsData)) {
+            const mapped = postsData.map((post) => mapPostToEntry(post));
+            setJournalEntries(mapped);
+          }
+        }
+      } catch (error) {
+        console.warn("Failed to load posts; keeping existing entries", error);
       } finally {
         setIsContentLoading(false);
       }
@@ -80,6 +97,10 @@ function App() {
         <Route
           path="/journal"
           element={<JournalPage entries={journalEntries} />}
+        />
+        <Route
+          path="/journal/:slug"
+          element={<JournalEntryPage entries={journalEntries} />}
         />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
