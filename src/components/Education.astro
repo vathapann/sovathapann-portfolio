@@ -1,0 +1,27 @@
+---
+import { education } from '../data/portfolio';
+---
+
+<section id="education" class="mx-auto max-w-2xl py-16 sm:py-20" aria-labelledby="education-heading">
+  <h2 id="education-heading" class="section-heading" data-num="03">Education</h2>
+
+  <div class="space-y-4 text-base leading-relaxed text-[var(--color-slate-dark)]">
+    {education.paragraphs.map((p) => <p set:html={p} />)}
+
+    <ul
+      class="mt-2 grid grid-cols-2 gap-x-6 gap-y-2 font-mono text-sm text-[var(--color-slate-dark)]"
+      aria-label="Education focus areas"
+    >
+      {
+        education.skills.map((skill) => (
+          <li class="flex items-center gap-2">
+            <span class="text-[var(--color-mint)]" aria-hidden="true">
+              ▹
+            </span>
+            <span>{skill}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000">
+  <rect width="1600" height="1000" fill="#0a192f"/>
+  <g fill="#112240" stroke="#233554" stroke-width="2">
+    <rect x="80" y="80" width="1440" height="120" rx="8"/>
+    <rect x="80" y="240" width="700" height="280" rx="8"/>
+    <rect x="820" y="240" width="700" height="280" rx="8"/>
+    <rect x="80" y="560" width="1440" height="360" rx="8"/>
+  </g>
+  <g fill="#64ffda" font-family="JetBrains Mono, monospace">
+    <text x="120" y="155" font-size="32" font-weight="700">SIM Registration Service</text>
+    <circle cx="1460" cy="140" r="8"/>
+    <text x="1485" y="148" font-size="20" fill="#8892b0">healthy</text>
+  </g>
+  <g fill="#ccd6f6" font-family="JetBrains Mono, monospace">
+    <text x="120" y="310" font-size="22">Subscribers</text>
+    <text x="120" y="400" font-size="64" font-weight="700">1,024,381</text>
+    <text x="120" y="450" font-size="18" fill="#64ffda">↑ 2.4% (24h)</text>
+
+    <text x="860" y="310" font-size="22">Avg latency</text>
+    <text x="860" y="400" font-size="64" font-weight="700">86<tspan font-size="32" fill="#8892b0">ms</tspan></text>
+    <text x="860" y="450" font-size="18" fill="#64ffda">p95: 142ms</text>
+
+    <text x="120" y="620" font-size="22">Throughput (req/min)</text>
+  </g>
+  <g fill="none" stroke="#64ffda" stroke-width="3">
+    <polyline points="120,830 250,800 380,780 510,820 640,740 770,720 900,760 1030,690 1160,710 1290,650 1420,680 1500,640"/>
+  </g>
+  <g fill="#64ffda" opacity="0.3">
+    <circle cx="120" cy="830" r="4"/>
+    <circle cx="380" cy="780" r="4"/>
+    <circle cx="640" cy="740" r="4"/>
+    <circle cx="900" cy="760" r="4"/>
+    <circle cx="1160" cy="710" r="4"/>
+    <circle cx="1420" cy="680" r="4"/>
+  </g>
+</svg>

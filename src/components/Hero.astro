@@ -1,0 +1,41 @@
+---
+import { hero, site } from '../data/portfolio';
+---
+
+<section
+  id="hero"
+  class="mx-auto flex min-h-[calc(100vh-6rem)] max-w-2xl flex-col justify-center py-16"
+  aria-labelledby="hero-heading"
+>
+  <p class="fade-up font-mono text-sm text-[var(--color-mint)]" data-delay="1">
+    {hero.greeting}
+  </p>
+
+  <h2
+    id="hero-heading"
+    class="fade-up mt-4 text-[clamp(2.5rem,8vw,4.5rem)] font-bold leading-none tracking-tight text-[var(--color-slate-lightest)]"
+    data-delay="2"
+  >
+    {hero.name}
+  </h2>
+
+  <p
+    class="fade-up mt-3 text-[clamp(1.75rem,6vw,3.25rem)] font-bold leading-none tracking-tight text-[var(--color-slate-dark)]"
+    data-delay="3"
+  >
+    {hero.tagline}
+  </p>
+
+  <p
+    class="fade-up mt-6 max-w-xl text-base leading-relaxed text-[var(--color-slate-dark)]"
+    data-delay="4"
+    set:html={hero.intro}
+  />
+
+  <div class="fade-up mt-10 flex flex-wrap gap-4" data-delay="5">
+    <a href={hero.primaryCtaHref} class="btn-ghost">{hero.primaryCtaLabel}</a>
+    <a href={site.resumeUrl} target="_blank" rel="noreferrer noopener" class="btn-ghost">
+      View resume
+    </a>
+  </div>
+</section>
