@@ -77,7 +77,7 @@ Edit the `@theme` block at the top of `src/styles/global.css`. The two anchor co
 
 ### 4. Replace the resume
 
-Drop your CV at `public/resume.pdf`. The "View resume" and resume-icon links already point there.
+Drop your CV at `public/resume.pdf`. The "View resume" and resume-icon links already point there through `site.resumeUrl` in `src/data/portfolio.ts`.
 
 ## Building and deploying
 
