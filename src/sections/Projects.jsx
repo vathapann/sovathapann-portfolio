@@ -95,6 +95,9 @@ export function Projects() {
     >
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
+          <p className="text-blue-400 text-xs font-semibold uppercase tracking-widest mb-3">
+            // 03 — Projects
+          </p>
           <h2 className="text-3xl font-bold text-white mb-3">
             Featured Projects
           </h2>
@@ -109,19 +112,19 @@ export function Projects() {
           {projects.map((project) => (
             <article
               key={project.id}
-              className="bg-slate-900/70 border border-slate-800 rounded-xl p-5 sm:p-6 shadow-lg shadow-slate-950/40 hover:border-blue-500/60 hover:-translate-y-1 transition-all duration-200 flex flex-col"
+              className="bg-slate-900/70 border border-slate-800 rounded-xl p-5 sm:p-6 shadow-lg shadow-slate-950/40 hover:border-blue-500/50 hover:shadow-blue-500/5 hover:-translate-y-1 transition-all duration-200 flex flex-col"
             >
               {/* Header */}
               <div className="flex items-start gap-3 mb-4">
-                <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-slate-800">
+                <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-slate-800 shrink-0">
                   {project.icon}
                 </div>
-                <div>
-                  <h3 className="text-lg sm:text-xl font-semibold text-white">
+                <div className="min-w-0">
+                  <h3 className="text-base sm:text-lg font-semibold text-white leading-snug">
                     {project.title}
                   </h3>
                   <p className="text-xs text-slate-400 mt-1">
-                    {project.role} • {project.period}
+                    {project.role} · {project.period}
                   </p>
                 </div>
               </div>
@@ -133,18 +136,18 @@ export function Projects() {
               <ul className="text-xs sm:text-sm text-slate-400 space-y-1.5 mb-4">
                 {project.bullets.map((line, idx) => (
                   <li key={idx} className="flex gap-2">
-                    <span className="mt-[6px] h-1 w-1 rounded-full bg-blue-500" />
+                    <span className="mt-[6px] h-1.5 w-1.5 rounded-full bg-blue-500 shrink-0" />
                     <span>{line}</span>
                   </li>
                 ))}
               </ul>
 
               {/* Tech chips */}
-              <div className="flex flex-wrap gap-2 mb-4">
+              <div className="flex flex-wrap gap-1.5 mb-4">
                 {project.tech.map((tag) => (
                   <span
                     key={tag}
-                    className="inline-flex items-center rounded-full bg-slate-800/80 border border-slate-700 px-2.5 py-1 text-[11px] uppercase tracking-wide text-slate-300"
+                    className="inline-flex items-center rounded-full bg-slate-800 border border-slate-700/60 px-2.5 py-0.5 text-[11px] font-medium uppercase tracking-wide text-slate-400"
                   >
                     {tag}
                   </span>
@@ -153,23 +156,23 @@ export function Projects() {
 
               {/* Links */}
               <div className="mt-auto flex gap-3 pt-2">
-                {project.links.github && (
+                {project.links.github && project.links.github !== "#" && (
                   <a
                     href={project.links.github}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs sm:text-sm px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-100 transition-colors"
+                    className="inline-flex items-center gap-1.5 text-xs sm:text-sm px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-100 transition-colors duration-200"
                   >
                     <Github className="w-4 h-4" />
                     <span>Code</span>
                   </a>
                 )}
-                {project.links.demo && (
+                {project.links.demo && project.links.demo !== "#" && (
                   <a
                     href={project.links.demo}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs sm:text-sm px-3 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white transition-colors"
+                    className="inline-flex items-center gap-1.5 text-xs sm:text-sm px-3 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white transition-colors duration-200"
                   >
                     <ExternalLink className="w-4 h-4" />
                     <span>Live Demo</span>
@@ -183,6 +186,5 @@ export function Projects() {
     </section>
   );
 }
-
 
 //TODO: add timeline for CV (https://github.com/Digital-Humanities-Toolkit/timeline-builder)

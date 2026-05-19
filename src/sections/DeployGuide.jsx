@@ -28,6 +28,9 @@ export function DeployGuide({ steps = [], isLoading = false }) {
       <section id="guide" className="py-20 px-4">
         <div className="max-w-4xl mx-auto">
           <div className="mb-10">
+            <p className="text-blue-400 text-xs font-semibold uppercase tracking-widest mb-3">
+              // 04 — Guide
+            </p>
             <h2 className="text-3xl font-bold text-white mb-4">
               Deployment Guideline
             </h2>
