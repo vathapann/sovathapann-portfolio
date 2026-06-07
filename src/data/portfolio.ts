@@ -22,7 +22,7 @@ export const site = {
 
 export const hero = {
   // greeting: "Hi, my name is",
-  name: "Sovatha Pann.",
+  name: "Sovatha Pann",
   tagline: "Full-stack developer / DevOps Engineer.",
   // intro: `I'm a Sydney-based engineer focused on full-stack development and platform engineering. Currently finishing a Master of IT at UTS while looking for full-stack and DevOps roles in Australia.`,
   primaryCtaLabel: "See my work",
@@ -360,4 +360,5 @@ export const navLinks = [
   { label: "Education", href: "#education" },
   { label: "Work", href: "#projects" },
   { label: "Contact", href: "#contact" },
+  { label: "Blog", href: "/blog" },
 ] as const;
