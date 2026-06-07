@@ -1,11 +1,19 @@
 ---
-import { education } from '../data/portfolio';
+import { education } from "../data/portfolio";
 ---
 
-<section id="education" class="mx-auto max-w-2xl py-16 sm:py-20" aria-labelledby="education-heading">
-  <h2 id="education-heading" class="section-heading" data-num="03">Education</h2>
+<section
+  id="education"
+  class="mx-auto max-w-2xl py-16 sm:py-20"
+  aria-labelledby="education-heading"
+>
+  <h2 id="education-heading" class="section-heading" data-num="04">
+    Education
+  </h2>
 
-  <div class="space-y-4 text-base leading-relaxed text-[var(--color-slate-dark)]">
+  <div
+    class="space-y-4 text-base leading-relaxed text-[var(--color-slate-dark)]"
+  >
     {education.paragraphs.map((p) => <p set:html={p} />)}
 
     <ul

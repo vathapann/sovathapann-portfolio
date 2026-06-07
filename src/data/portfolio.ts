@@ -4,7 +4,9 @@
 export const site = {
   name: "Sovatha Pann",
   fullName: "Sovatha Pann",
-  title: "Full-stack engineer.",
+  profileImage: "/images/profile-pic.jpeg",
+  profileImageAlt: "Portrait of Sovatha Pann",
+  title: "Full-stack engineer | DevOps engineer",
   tagline:
     "I build reliable full systems and ship infrastructure for high-traffic products.",
   location: "Sydney, Australia",
@@ -14,15 +16,15 @@ export const site = {
     github: "https://github.com/vathapann",
     linkedin: "https://www.linkedin.com/in/sovatha-pann-a96834100/",
     email: "mailto:sovathapann@gmail.com",
+    medium: "https://medium.com/@Sovathapann",
   },
 } as const;
 
 export const hero = {
-  greeting: "Hi, my name is",
+  // greeting: "Hi, my name is",
   name: "Sovatha Pann.",
-  tagline:
-    "I build full-stack systems that scale and currently transferring to DevOps roles.",
-  intro: `I'm a Sydney-based engineer focused on full-stack development and platform engineering. Currently finishing a Master of IT at UTS while looking for full-stack and DevOps roles in Australia.`,
+  tagline: "Full-stack developer / DevOps Engineer.",
+  // intro: `I'm a Sydney-based engineer focused on full-stack development and platform engineering. Currently finishing a Master of IT at UTS while looking for full-stack and DevOps roles in Australia.`,
   primaryCtaLabel: "See my work",
   primaryCtaHref: "#projects",
 };
@@ -135,6 +137,97 @@ export const education = {
   ],
 };
 
+export type MomentImage = {
+  src: string;
+  alt: string;
+};
+
+export type Moment = {
+  title: string;
+  context: string;
+  description: string;
+  images: MomentImage[];
+};
+
+export const moments: Moment[] = [
+  {
+    title: "[VAMStack] Field deployment",
+    context: "Smart Hospital Services care center",
+    description:
+      "Supported healthcare technology delivery at VAMStack, where I worked across responsive web applications, API integration, authentication flows, and AI-assisted medical imaging tools. This on-site moment reflects the practical side of turning product work into a usable service environment.",
+    images: [
+      {
+        src: "/images/1658196971166.jpg",
+        alt: "Sovatha Pann with colleagues at a Smart Hospital Services care center display",
+      },
+      // {
+      //   src: "/images/20211104_113630.jpg",
+      //   alt: "Smart Hospital Services screening kiosk showing Sovatha Pann",
+      // },
+      {
+        src: "/images/vamstack-2022-on-duty.jpg",
+        alt: "VAMStack on-duty team moment",
+      },
+    ],
+  },
+  {
+    title: "[VAMStack] Technical presentation",
+    context: "DHTC Bangkok 2022 speaker profile",
+    description:
+      "Represented VAMStack's medical AI platform work in a technical presentation context, connecting my AI engineering experience in image segmentation, face recognition, and diagnostic workflow tooling with healthcare product use cases.",
+    images: [
+      {
+        src: "/images/20220824_212915.jpg",
+        alt: "Conference speaker page showing Sovatha Pann as an AI engineer",
+      },
+      // {
+      //   src: "/images/20240830_145528.jpg",
+      //   alt: "VxPACS medical AI platform display banner",
+      // },
+    ],
+  },
+  {
+    title: "[Telco Connecting] Infrastructure duty",
+    context: "Network and server room support",
+    description:
+      "Handled hands-on infrastructure support for Telco Connecting, including Windows/Linux server maintenance, network equipment setup, subnetting, VLAN coordination, and end-user technical support to keep internal services reliable.",
+    images: [
+      {
+        src: "/images/telco-connecting-on-duty-setting-network.jpg",
+        alt: "Server rack with network switches and fiber connections",
+      },
+      {
+        src: "/images/telco-connecting-on-duty-setting-network-1.png",
+        alt: "Sovatha Pann setting up network equipment on site",
+      },
+      {
+        src: "/images/telco-connecting-on-duty-setting-network-2.jpg",
+        alt: "Sovatha Pann setting up network equipment on site",
+      },
+    ],
+  },
+  {
+    title: "[Alphatex] Proposal discussion",
+    context: "Project proposal discussion",
+    description:
+      "Worked as a freelance full-stack developer and DevOps engineer for AlphaTex, delivering a school management system and supporting client discussions around scope, workflows, deployment planning, CI/CD, SSL setup, and production operations.",
+    images: [
+      {
+        src: "/images/alphatex-on-duty-project-proposal-discussion.jpg",
+        alt: "Sovatha Pann in a meeting room discussing a project proposal with colleagues",
+      },
+      {
+        src: "/images/alphatex-on-duty-project-proposal-discussion-1.jpg",
+        alt: "Sovatha Pann presenting a project proposal to colleagues",
+      },
+      {
+        src: "/images/alphatex-on-duty-project-proposal-discussion-2.jpg",
+        alt: "Sovatha Pann and colleagues reviewing a project proposal",
+      },
+    ],
+  },
+];
+
 export type ProjectImage = {
   src: string;
   alt: string;
@@ -198,6 +291,31 @@ export const featuredProjects: FeaturedProject[] = [
     github: undefined,
     external: undefined,
   },
+  {
+    title: "School management system",
+    description: `A confidential freelance school management platform delivered for a private school, supporting <span class="text-slate-200">200+ active student records</span> across enrolment, grading, scheduling, attendance, classroom management, and inventory workflows. Designed and built 30+ Express.js REST API endpoints to streamline operations across 4 departments. Source code is private due to client confidentiality.`,
+    tech: [
+      "Vue.js",
+      "Express.js",
+      "MongoDB, Docker",
+      "Role-Based Access Control, Digital Ocean Droplet deployment",
+    ],
+    image: "/images/willkids-school-ui.png",
+    images: [
+      {
+        src: "/images/willkids-school-ui.png",
+        alt: "Screenshot of the school management system dashboard",
+      },
+      {
+        src: "/images/willkids-school-ui-1.png",
+        alt: "Screenshot of the school management system dashboard",
+      },
+    ],
+    imageAlt: "Screenshot of the school management system dashboard",
+    variant: "showcase",
+    github: undefined,
+    external: undefined,
+  },
 ];
 
 export type OtherProject = {
@@ -238,6 +356,7 @@ export const otherProjects: OtherProject[] = [
 export const navLinks = [
   { label: "About", href: "#about" },
   { label: "Experience", href: "#experience" },
+  { label: "Moments", href: "#moments" },
   { label: "Education", href: "#education" },
   { label: "Work", href: "#projects" },
   { label: "Contact", href: "#contact" },

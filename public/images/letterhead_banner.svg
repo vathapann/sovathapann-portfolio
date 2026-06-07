@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1584 396" width="1584" height="396">
+  <!--
+    ============================================================
+    LinkedIn letterhead banner  (1584 x 396)
+    ============================================================
+    HOW TO EDIT
+      Colors / sizes : change the hex values in the <style> classes below.
+                       Each color is defined once; edit it there.
+      The text       : edit the <text> elements near the bottom.
+      Reposition all : change the translate(832,0) on the <g> group.
+                       832 is the horizontal center; raise/lower to move.
+      Accent width   : change x1 (left) and x2 (right) on the <line>.
+
+    EXPORT TO PNG
+      Browser : open this file, then screenshot.
+      CLI     : rsvg-convert -w 3168 -h 792 letterhead_banner.svg -o out.png
+                cairosvg letterhead_banner.svg -o out.png -W 3168 -H 792
+    ============================================================
+  -->
+  <style>
+    .bg   { fill: #0a192f; }                                  /* background navy        */
+    .name { fill: #e6f1ff; font-size: 30px; letter-spacing: 6px; }   /* name (near-white) */
+    .rule { stroke: #64ffda; stroke-width: 1.5px; }           /* teal accent rule       */
+    .sub  { fill: #8892b0; font-size: 16px; letter-spacing: 3px; }   /* role/city (slate) */
+    .name, .sub { font-family: 'DejaVu Sans Mono', 'SF Mono', ui-monospace, monospace; }
+  </style>
+
+  <!-- background -->
+  <rect class="bg" x="0" y="0" width="1584" height="396"/>
+
+  <!-- the whole block is centered at x=832; change translate to move it -->
+  <g transform="translate(832,0)" text-anchor="middle">
+    <!-- NAME -->
+    <text class="name" x="0" y="172">SOVATHA PANN</text>
+
+    <!-- accent rule (x1 = left end, x2 = right end) -->
+    <line class="rule" x1="-220" y1="196" x2="220" y2="196"/>
+
+    <!-- ROLE + CITY  (&#183; is the middot dot) -->
+    <text class="sub" x="0" y="234">BACKEND &amp; DEVOPS ENGINEER &#183; SYDNEY</text>
+  </g>
+</svg>
