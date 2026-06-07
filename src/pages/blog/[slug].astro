@@ -1,0 +1,67 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { data, rendered } = post;
+---
+
+<Layout
+  title={`${data.title} — Sovatha Pann`}
+  description={data.excerpt ?? data.title}
+>
+  <div class="mx-auto max-w-2xl px-6 py-20 sm:px-10">
+    <a
+      href="/blog"
+      class="inline-flex items-center gap-2 font-mono text-xs tracking-widest uppercase text-[var(--color-slate-dark)] hover:text-[var(--color-mint)] transition-colors duration-200 mb-16"
+    >
+      <svg
+        width="14"
+        height="14"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <line x1="19" y1="12" x2="5" y2="12"></line>
+        <polyline points="12 19 5 12 12 5"></polyline>
+      </svg>
+       All posts
+    </a>
+
+    <header class="mb-12">
+      <p class="font-mono text-xs text-[var(--color-mint)] tracking-widest mb-3">
+        {data.date}
+      </p>
+      <h1
+        class="text-3xl sm:text-4xl font-bold tracking-tight text-[var(--color-slate-lightest)] leading-tight mb-5"
+      >
+        {data.title}
+      </h1>
+      {
+        data.tags.length > 0 && (
+          <div class="flex flex-wrap gap-2">
+            {data.tags.map((tag) => (
+              <span class="font-mono text-xs px-2 py-0.5 rounded border border-[var(--color-navy-lighter)] text-[var(--color-slate-darkest)]">
+                {tag}
+              </span>
+            ))}
+          </div>
+        )
+      }
+    </header>
+
+    <div class="prose" set:html={rendered?.html} />
+  </div>
+</Layout>

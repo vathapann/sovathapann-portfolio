@@ -1,0 +1,152 @@
+---
+import { experience } from '../data/portfolio';
+---
+
+<section id="experience" class="mx-auto max-w-2xl py-16 sm:py-20" aria-labelledby="experience-heading">
+  <h2 id="experience-heading" class="section-heading" data-num="02">Where I've worked</h2>
+
+  <div class="experience-root flex flex-col gap-3 sm:flex-row sm:gap-6">
+    <div
+      class="tablist relative flex shrink-0 overflow-x-auto border-b border-[var(--color-navy-lighter)] sm:flex-col sm:overflow-visible sm:border-b-0 sm:border-l"
+      role="tablist"
+      aria-label="Companies"
+    >
+      {
+        experience.map((job, idx) => (
+          <button
+            type="button"
+            role="tab"
+            id={`tab-${idx}`}
+            aria-selected={idx === 0 ? 'true' : 'false'}
+            aria-controls={`panel-${idx}`}
+            tabindex={idx === 0 ? 0 : -1}
+            data-index={idx}
+            class:list={[
+              'tab-button relative whitespace-nowrap px-5 py-3 text-left font-mono text-xs transition-all duration-200 hover:bg-[var(--color-navy-light)]/40 hover:text-[var(--color-mint)] focus:bg-[var(--color-navy-light)]/40 focus:text-[var(--color-mint)] focus:outline-none',
+              idx === 0
+                ? 'text-[var(--color-mint)]'
+                : 'text-[var(--color-slate-dark)]',
+            ]}
+          >
+            {job.company}
+          </button>
+        ))
+      }
+      <span
+        class="tab-marker absolute left-0 hidden h-px w-full bg-[var(--color-mint)] transition-transform duration-300 sm:left-auto sm:h-10 sm:w-px"
+        aria-hidden="true"
+      ></span>
+    </div>
+
+    <div class="flex-1">
+      {
+        experience.map((job, idx) => (
+          <div
+            role="tabpanel"
+            id={`panel-${idx}`}
+            aria-labelledby={`tab-${idx}`}
+            tabindex="0"
+            hidden={idx !== 0}
+            class="tab-panel"
+          >
+            <h3 class="text-lg font-medium text-[var(--color-slate-lightest)]">
+              <span>{job.role}</span>
+              {job.url ? (
+                <a
+                  href={job.url}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  class="text-[var(--color-mint)] transition-colors duration-200 hover:underline"
+                >
+                  {' '}@ {job.company}
+                </a>
+              ) : (
+                <span class="text-[var(--color-mint)]"> @ {job.company}</span>
+              )}
+            </h3>
+            <p class="mt-1 font-mono text-xs tracking-wide text-[var(--color-slate-dark)]">
+              {job.period}
+            </p>
+            <ul class="mt-4 space-y-3 text-[var(--color-slate-dark)]">
+              {job.bullets.map((b) => (
+                <li class="relative pl-7 text-sm leading-relaxed">
+                  <span
+                    class="absolute left-0 top-1 text-[var(--color-mint)]"
+                    aria-hidden="true"
+                  >
+                    ▹
+                  </span>
+                  <span set:html={b} />
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  // Tab switching for the experience section. Keyboard support: ←/→ on desktop tabs, ↑/↓ on mobile.
+  const root = document.querySelector('.experience-root');
+  if (root) {
+    const buttons = root.querySelectorAll<HTMLButtonElement>('.tab-button');
+    const panels = root.querySelectorAll<HTMLDivElement>('.tab-panel');
+    const marker = root.querySelector<HTMLSpanElement>('.tab-marker');
+
+    const activate = (idx: number) => {
+      buttons.forEach((b, i) => {
+        const active = i === idx;
+        b.setAttribute('aria-selected', active ? 'true' : 'false');
+        b.setAttribute('tabindex', active ? '0' : '-1');
+        b.classList.toggle('text-[var(--color-mint)]', active);
+        b.classList.toggle('text-[var(--color-slate-dark)]', !active);
+      });
+      panels.forEach((p, i) => {
+        p.hidden = i !== idx;
+      });
+      if (marker) {
+        // On desktop the marker is a vertical bar that slides down the tab list
+        const isDesktop = window.matchMedia('(min-width: 640px)').matches;
+        if (isDesktop) {
+          marker.style.transform = `translateY(${idx * 100}%)`;
+          marker.classList.remove('hidden');
+        } else {
+          marker.classList.add('hidden');
+        }
+      }
+    };
+
+    buttons.forEach((btn, idx) => {
+      btn.addEventListener('click', () => activate(idx));
+      btn.addEventListener('keydown', (e) => {
+        const isDesktop = window.matchMedia('(min-width: 640px)').matches;
+        const next = isDesktop
+          ? e.key === 'ArrowDown'
+            ? idx + 1
+            : e.key === 'ArrowUp'
+            ? idx - 1
+            : null
+          : e.key === 'ArrowRight'
+          ? idx + 1
+          : e.key === 'ArrowLeft'
+          ? idx - 1
+          : null;
+        if (next === null) return;
+        e.preventDefault();
+        const target = ((next % buttons.length) + buttons.length) % buttons.length;
+        buttons[target].focus();
+        activate(target);
+      });
+    });
+
+    activate(0);
+    window.addEventListener('resize', () => {
+      const active = Array.from(buttons).findIndex(
+        (b) => b.getAttribute('aria-selected') === 'true'
+      );
+      if (active >= 0) activate(active);
+    });
+  }
+</script>

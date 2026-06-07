@@ -1,0 +1,38 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Sidebar from "../components/Sidebar.astro";
+import Hero from "../components/Hero.astro";
+import About from "../components/About.astro";
+import Experience from "../components/Experience.astro";
+import Moments from "../components/Moments.astro";
+import Education from "../components/Education.astro";
+import FeaturedProjects from "../components/FeaturedProjects.astro";
+import Contact from "../components/Contact.astro";
+---
+
+<Layout>
+  <a
+    href="#main"
+    class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:rounded focus:bg-[var(--color-navy-light)] focus:px-4 focus:py-2 focus:text-[var(--color-mint)]"
+  >
+    Skip to content
+  </a>
+
+  <div class="mx-auto max-w-7xl px-6 sm:px-10 md:px-12 lg:px-0">
+    <Sidebar />
+
+    <main
+      id="main"
+      class="py-10 sm:py-14 md:py-16 lg:ml-[33.333333%] lg:w-2/3 lg:px-12 lg:py-20 xl:px-20 xl:py-24"
+      tabindex="-1"
+    >
+      <Hero />
+      <About />
+      <Experience />
+      <Moments />
+      <Education />
+      <FeaturedProjects />
+      <Contact />
+    </main>
+  </div>
+</Layout>

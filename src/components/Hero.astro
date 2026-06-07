@@ -1,0 +1,70 @@
+---
+import { hero, site } from "../data/portfolio";
+
+const heroContent = hero as typeof hero & {
+  greeting?: string;
+  intro?: string;
+  primaryCtaHref?: string;
+  primaryCtaLabel?: string;
+};
+---
+
+<section
+  id="hero"
+  class="mx-auto flex min-h-[calc(100vh-6rem)] max-w-2xl flex-col justify-center py-16"
+  aria-labelledby="hero-heading"
+>
+  {
+    heroContent.greeting && (
+      <p
+        class="fade-up font-mono text-sm text-[var(--color-mint)]"
+        data-delay="1"
+      >
+        {heroContent.greeting}
+      </p>
+    )
+  }
+
+  <h2
+    id="hero-heading"
+    class="fade-up mt-4 text-[clamp(2.5rem,8vw,4.5rem)] leading-none font-bold tracking-tight text-[var(--color-slate-lightest)]"
+    data-delay="2"
+  >
+    {heroContent.name}
+  </h2>
+
+  <p
+    class="fade-up mt-3 text-[clamp(1.75rem,6vw,3.25rem)] leading-none font-bold tracking-tight text-[var(--color-slate-dark)]"
+    data-delay="3"
+  >
+    {heroContent.tagline}
+  </p>
+
+  {
+    heroContent.intro && (
+      <p
+        class="fade-up mt-6 max-w-xl text-base leading-relaxed text-[var(--color-slate-dark)]"
+        data-delay="4"
+        set:html={heroContent.intro}
+      />
+    )
+  }
+
+  <div class="fade-up mt-10 flex flex-wrap gap-4" data-delay="5">
+    {
+      heroContent.primaryCtaHref && heroContent.primaryCtaLabel && (
+        <a href={heroContent.primaryCtaHref} class="btn-ghost">
+          {heroContent.primaryCtaLabel}
+        </a>
+      )
+    }
+    <a
+      href={site.resumeUrl}
+      target="_blank"
+      rel="noreferrer noopener"
+      class="btn-ghost"
+    >
+      View resume
+    </a>
+  </div>
+</section>

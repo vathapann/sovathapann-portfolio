@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000">
+  <rect width="1600" height="1000" fill="#0a192f"/>
+  <rect x="0" y="0" width="240" height="1000" fill="#020c1b"/>
+  <g fill="#64ffda" font-family="JetBrains Mono, monospace">
+    <text x="40" y="80" font-size="24" font-weight="700">▲ Traefik</text>
+  </g>
+  <g fill="#8892b0" font-family="JetBrains Mono, monospace" font-size="18">
+    <text x="40" y="160">Dashboard</text>
+    <text x="40" y="210" fill="#64ffda">HTTP Routers</text>
+    <text x="40" y="260">HTTP Services</text>
+    <text x="40" y="310">Middlewares</text>
+    <text x="40" y="360">Entry Points</text>
+  </g>
+  <g fill="#ccd6f6" font-family="JetBrains Mono, monospace">
+    <text x="290" y="80" font-size="32" font-weight="700">HTTP Routers</text>
+    <text x="290" y="120" font-size="18" fill="#8892b0">15 active · 0 errors</text>
+  </g>
+  <g font-family="JetBrains Mono, monospace" font-size="18">
+    <rect x="290" y="180" width="1260" height="80" rx="6" fill="#112240" stroke="#233554"/>
+    <circle cx="320" cy="220" r="8" fill="#64ffda"/>
+    <text x="350" y="227" fill="#ccd6f6">grafana-prod</text>
+    <text x="800" y="227" fill="#8892b0">Host(`grafana.sovatha.dev`)</text>
+    <text x="1480" y="227" fill="#64ffda" text-anchor="end">EN</text>
+
+    <rect x="290" y="280" width="1260" height="80" rx="6" fill="#112240" stroke="#233554"/>
+    <circle cx="320" cy="320" r="8" fill="#64ffda"/>
+    <text x="350" y="327" fill="#ccd6f6">portainer</text>
+    <text x="800" y="327" fill="#8892b0">Host(`portainer.sovatha.dev`)</text>
+    <text x="1480" y="327" fill="#64ffda" text-anchor="end">EN</text>
+
+    <rect x="290" y="380" width="1260" height="80" rx="6" fill="#112240" stroke="#233554"/>
+    <circle cx="320" cy="420" r="8" fill="#64ffda"/>
+    <text x="350" y="427" fill="#ccd6f6">prometheus</text>
+    <text x="800" y="427" fill="#8892b0">Host(`prom.sovatha.dev`)</text>
+    <text x="1480" y="427" fill="#64ffda" text-anchor="end">EN</text>
+
+    <rect x="290" y="480" width="1260" height="80" rx="6" fill="#112240" stroke="#233554"/>
+    <circle cx="320" cy="520" r="8" fill="#64ffda"/>
+    <text x="350" y="527" fill="#ccd6f6">gitea</text>
+    <text x="800" y="527" fill="#8892b0">Host(`git.sovatha.dev`)</text>
+    <text x="1480" y="527" fill="#64ffda" text-anchor="end">EN</text>
+
+    <rect x="290" y="580" width="1260" height="80" rx="6" fill="#112240" stroke="#233554"/>
+    <circle cx="320" cy="620" r="8" fill="#64ffda"/>
+    <text x="350" y="627" fill="#ccd6f6">vaultwarden</text>
+    <text x="800" y="627" fill="#8892b0">Host(`pass.sovatha.dev`)</text>
+    <text x="1480" y="627" fill="#64ffda" text-anchor="end">EN</text>
+
+    <rect x="290" y="680" width="1260" height="80" rx="6" fill="#112240" stroke="#233554"/>
+    <circle cx="320" cy="720" r="8" fill="#64ffda"/>
+    <text x="350" y="727" fill="#ccd6f6">jellyfin</text>
+    <text x="800" y="727" fill="#8892b0">Host(`media.sovatha.dev`)</text>
+    <text x="1480" y="727" fill="#64ffda" text-anchor="end">EN</text>
+  </g>
+</svg>

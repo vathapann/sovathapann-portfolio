@@ -3,6 +3,7 @@ name: Deploy portfolio to sovathapann.site
 on:
   push:
     branches: [ "main" ]
+  # workflow_dispatch:   # allows the blog-posts repo to trigger a rebuild
 
 jobs:
   deploy:

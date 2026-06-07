@@ -1,0 +1,29 @@
+---
+import { site } from "../data/portfolio";
+---
+
+<section
+  id="contact"
+  class="mx-auto max-w-md py-20 text-center sm:py-24"
+  aria-labelledby="contact-heading"
+>
+  <p class="font-mono text-sm text-[var(--color-mint)]">06. What's next?</p>
+  <h2
+    id="contact-heading"
+    class="mt-2 text-4xl font-bold tracking-tight text-[var(--color-slate-lightest)] sm:text-5xl"
+  >
+    Get in touch
+  </h2>
+  <p class="mt-5 text-base leading-relaxed text-[var(--color-slate-dark)]">
+    I'm currently open to backend, platform, and DevOps roles in Sydney. If
+    you'd like to chat about a role or just say hi, drop me a line — I usually
+    reply within a day.
+  </p>
+  <a href={site.social.email} class="btn-ghost mt-10">Say hello</a>
+</section>
+
+<footer class="mx-auto max-w-3xl pb-10 text-center">
+  <p class="font-mono text-xs text-[var(--color-slate-darkest)]">
+    Built by {site.fullName} · Astro + Tailwind · Deployed on DigitalOcean
+  </p>
+</footer>

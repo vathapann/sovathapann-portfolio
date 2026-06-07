@@ -1,0 +1,461 @@
+---
+import { moments } from "../data/portfolio";
+---
+
+<section
+  id="moments"
+  class="mx-auto max-w-3xl py-16 sm:py-20"
+  aria-labelledby="moments-heading"
+>
+  <h2 id="moments-heading" class="section-heading" data-num="03">Moments</h2>
+
+  <div class="grid gap-4 sm:grid-cols-2">
+    {
+      moments.map((moment) => {
+        const hasMultipleImages = moment.images.length > 1;
+
+        return (
+          <figure
+            class="group overflow-hidden rounded-lg border border-[var(--color-navy-lighter)] bg-[var(--color-navy-light)]/35 transition-colors duration-200 hover:border-[var(--color-mint)]/70"
+            role="button"
+            tabindex="0"
+            aria-label={`Open details for ${moment.title}`}
+            data-moment-card
+            data-moment-title={moment.title}
+            data-moment-context={moment.context}
+            data-moment-description={moment.description}
+            data-moment-images={JSON.stringify(moment.images)}
+          >
+            <div
+              class="relative aspect-[4/3] cursor-zoom-in overflow-hidden bg-[var(--color-navy-light)]"
+              data-moment-slideshow={hasMultipleImages ? "" : undefined}
+            >
+              {moment.images.map((image, imageIdx) => (
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  loading="lazy"
+                  decoding="async"
+                  aria-hidden={imageIdx === 0 ? "false" : "true"}
+                  data-moment-slide
+                  class:list={[
+                    "absolute inset-0 h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]",
+                    imageIdx === 0 ? "opacity-100" : "opacity-0",
+                  ]}
+                />
+              ))}
+
+              {hasMultipleImages && (
+                <>
+                  <button
+                    type="button"
+                    class="absolute top-1/2 left-3 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded bg-[var(--color-navy-deep)]/80 text-[var(--color-slate-lightest)] ring-1 ring-[var(--color-navy-lighter)] transition-colors duration-200 hover:text-[var(--color-mint)] focus:text-[var(--color-mint)]"
+                    aria-label={`Previous image for ${moment.title}`}
+                    data-moment-action="prev"
+                  >
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="m15 18-6-6 6-6" />
+                    </svg>
+                  </button>
+
+                  <button
+                    type="button"
+                    class="absolute top-1/2 right-3 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded bg-[var(--color-navy-deep)]/80 text-[var(--color-slate-lightest)] ring-1 ring-[var(--color-navy-lighter)] transition-colors duration-200 hover:text-[var(--color-mint)] focus:text-[var(--color-mint)]"
+                    aria-label={`Next image for ${moment.title}`}
+                    data-moment-action="next"
+                  >
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="m9 18 6-6-6-6" />
+                    </svg>
+                  </button>
+
+                  <div
+                    class="absolute bottom-3 left-1/2 z-10 flex -translate-x-1/2 gap-2"
+                    aria-label={`${moment.title} image slides`}
+                  >
+                    {moment.images.map((_, imageIdx) => (
+                      <button
+                        type="button"
+                        class:list={[
+                          "h-2.5 w-2.5 rounded-full ring-1 ring-[var(--color-slate-lightest)]/70 transition-colors duration-200",
+                          imageIdx === 0
+                            ? "bg-[var(--color-mint)]"
+                            : "bg-[var(--color-navy-deep)]/70",
+                        ]}
+                        aria-label={`Show image ${imageIdx + 1} for ${moment.title}`}
+                        aria-current={imageIdx === 0 ? "true" : "false"}
+                        data-moment-dot
+                      />
+                    ))}
+                  </div>
+                </>
+              )}
+            </div>
+            <figcaption class="p-4">
+              <p class="font-mono text-xs text-[var(--color-mint)]">
+                {moment.context}
+              </p>
+              <h3 class="mt-2 text-sm font-medium text-[var(--color-slate-lightest)]">
+                {moment.title}
+              </h3>
+              <p class="mt-3 line-clamp-3 text-sm leading-relaxed text-[var(--color-slate-dark)]">
+                {moment.description}
+              </p>
+            </figcaption>
+          </figure>
+        );
+      })
+    }
+  </div>
+</section>
+
+<div
+  id="moment-preview"
+  class="fixed inset-0 z-50 hidden items-center justify-center bg-[var(--color-navy-deep)]/90 p-4 backdrop-blur-sm sm:p-6"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="moment-preview-title"
+>
+  <button
+    type="button"
+    class="absolute inset-0 cursor-zoom-out"
+    aria-label="Close moment preview"
+    data-moment-preview-close></button>
+
+  <div
+    class="relative z-10 grid max-h-full w-full max-w-6xl overflow-hidden rounded-lg bg-[var(--color-navy)] ring-1 ring-[var(--color-navy-lighter)] lg:grid-cols-[minmax(0,1.35fr)_minmax(18rem,0.65fr)]"
+  >
+    <div
+      class="relative min-h-[18rem] bg-[var(--color-navy-deep)] sm:min-h-[28rem]"
+    >
+      <img
+        src=""
+        alt=""
+        class="h-full max-h-[76vh] w-full object-contain"
+        data-moment-preview-image
+      />
+
+      <button
+        type="button"
+        class="absolute top-1/2 left-3 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded bg-[var(--color-navy-deep)]/80 text-[var(--color-slate-lightest)] ring-1 ring-[var(--color-navy-lighter)] transition-colors duration-200 hover:text-[var(--color-mint)] focus:text-[var(--color-mint)]"
+        aria-label="Previous moment image"
+        data-moment-preview-action="prev"
+      >
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="m15 18-6-6 6-6"></path>
+        </svg>
+      </button>
+
+      <button
+        type="button"
+        class="absolute top-1/2 right-3 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded bg-[var(--color-navy-deep)]/80 text-[var(--color-slate-lightest)] ring-1 ring-[var(--color-navy-lighter)] transition-colors duration-200 hover:text-[var(--color-mint)] focus:text-[var(--color-mint)]"
+        aria-label="Next moment image"
+        data-moment-preview-action="next"
+      >
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="m9 18 6-6-6-6"></path>
+        </svg>
+      </button>
+
+      <div
+        class="absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 gap-2"
+        aria-label="Moment preview image slides"
+        data-moment-preview-dots
+      >
+      </div>
+    </div>
+
+    <div class="flex max-h-[76vh] flex-col overflow-y-auto p-5 sm:p-6">
+      <div class="mb-6 flex items-start justify-between gap-4">
+        <div>
+          <p
+            class="font-mono text-xs text-[var(--color-mint)]"
+            data-moment-preview-context
+          >
+          </p>
+          <h3
+            id="moment-preview-title"
+            class="mt-2 text-2xl font-semibold tracking-tight text-[var(--color-slate-lightest)]"
+            data-moment-preview-title
+          >
+          </h3>
+        </div>
+        <button
+          type="button"
+          class="flex h-10 w-10 shrink-0 items-center justify-center rounded bg-[var(--color-navy-light)] text-[var(--color-slate-lightest)] ring-1 ring-[var(--color-navy-lighter)] transition-colors duration-200 hover:text-[var(--color-mint)] focus:text-[var(--color-mint)]"
+          aria-label="Close moment preview"
+          data-moment-preview-close
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M18 6 6 18"></path>
+            <path d="m6 6 12 12"></path>
+          </svg>
+        </button>
+      </div>
+
+      <p
+        class="text-sm leading-relaxed text-[var(--color-slate-dark)]"
+        data-moment-preview-description
+      >
+      </p>
+    </div>
+  </div>
+</div>
+
+<script>
+  type MomentPreviewImage = {
+    src: string;
+    alt: string;
+  };
+
+  const momentPreview = document.querySelector<HTMLElement>("#moment-preview");
+  const momentPreviewImage = momentPreview?.querySelector<HTMLImageElement>(
+    "[data-moment-preview-image]",
+  );
+  const momentPreviewTitle = momentPreview?.querySelector<HTMLElement>(
+    "[data-moment-preview-title]",
+  );
+  const momentPreviewContext = momentPreview?.querySelector<HTMLElement>(
+    "[data-moment-preview-context]",
+  );
+  const momentPreviewDescription = momentPreview?.querySelector<HTMLElement>(
+    "[data-moment-preview-description]",
+  );
+  const momentPreviewDots = momentPreview?.querySelector<HTMLElement>(
+    "[data-moment-preview-dots]",
+  );
+  const momentPreviewPrevious = momentPreview?.querySelector<HTMLButtonElement>(
+    '[data-moment-preview-action="prev"]',
+  );
+  const momentPreviewNext = momentPreview?.querySelector<HTMLButtonElement>(
+    '[data-moment-preview-action="next"]',
+  );
+  let momentPreviewImages: MomentPreviewImage[] = [];
+  let momentPreviewIndex = 0;
+  let lastMomentTrigger: HTMLElement | null = null;
+
+  const updateMomentPreviewImage = (nextIndex: number) => {
+    if (
+      !momentPreviewImage ||
+      !momentPreviewDots ||
+      !momentPreviewImages.length
+    )
+      return;
+
+    momentPreviewIndex =
+      (nextIndex + momentPreviewImages.length) % momentPreviewImages.length;
+    const image = momentPreviewImages[momentPreviewIndex];
+
+    momentPreviewImage.src = image.src;
+    momentPreviewImage.alt = image.alt;
+
+    momentPreviewDots
+      .querySelectorAll<HTMLButtonElement>("[data-moment-preview-dot]")
+      .forEach((dot, dotIndex) => {
+        const isActive = dotIndex === momentPreviewIndex;
+        dot.classList.toggle("bg-[var(--color-mint)]", isActive);
+        dot.classList.toggle("bg-[var(--color-navy-deep)]/70", !isActive);
+        dot.setAttribute("aria-current", isActive ? "true" : "false");
+      });
+  };
+
+  const openMomentPreview = (card: HTMLElement, activeIndex: number) => {
+    if (
+      !momentPreview ||
+      !momentPreviewImage ||
+      !momentPreviewTitle ||
+      !momentPreviewContext ||
+      !momentPreviewDescription ||
+      !momentPreviewDots
+    ) {
+      return;
+    }
+
+    try {
+      momentPreviewImages = JSON.parse(
+        card.dataset.momentImages || "[]",
+      ) as MomentPreviewImage[];
+    } catch {
+      momentPreviewImages = [];
+    }
+
+    if (!momentPreviewImages.length) return;
+
+    lastMomentTrigger = card;
+    momentPreviewTitle.textContent = card.dataset.momentTitle || "";
+    momentPreviewContext.textContent = card.dataset.momentContext || "";
+    momentPreviewDescription.textContent = card.dataset.momentDescription || "";
+
+    momentPreviewDots.innerHTML = "";
+    momentPreviewImages.forEach((_, imageIndex) => {
+      const dot = document.createElement("button");
+      dot.type = "button";
+      dot.className =
+        "h-2.5 w-2.5 rounded-full ring-1 ring-[var(--color-slate-lightest)]/70 transition-colors duration-200";
+      dot.setAttribute("aria-label", `Show image ${imageIndex + 1}`);
+      dot.setAttribute("data-moment-preview-dot", "");
+      dot.addEventListener("click", () => updateMomentPreviewImage(imageIndex));
+      momentPreviewDots.append(dot);
+    });
+
+    const hasMultipleImages = momentPreviewImages.length > 1;
+    momentPreviewPrevious?.classList.toggle("hidden", !hasMultipleImages);
+    momentPreviewNext?.classList.toggle("hidden", !hasMultipleImages);
+    momentPreviewDots.classList.toggle("hidden", !hasMultipleImages);
+
+    updateMomentPreviewImage(activeIndex);
+    momentPreview.classList.remove("hidden");
+    momentPreview.classList.add("flex");
+    document.body.style.overflow = "hidden";
+    momentPreview
+      .querySelector<HTMLButtonElement>("[data-moment-preview-close]")
+      ?.focus();
+  };
+
+  const closeMomentPreview = () => {
+    if (!momentPreview || !momentPreviewImage) return;
+
+    momentPreview.classList.add("hidden");
+    momentPreview.classList.remove("flex");
+    momentPreviewImage.src = "";
+    document.body.style.overflow = "";
+    lastMomentTrigger?.focus();
+  };
+
+  momentPreview
+    ?.querySelectorAll<HTMLButtonElement>("[data-moment-preview-close]")
+    .forEach((button) => {
+      button.addEventListener("click", closeMomentPreview);
+    });
+  momentPreviewPrevious?.addEventListener("click", () =>
+    updateMomentPreviewImage(momentPreviewIndex - 1),
+  );
+  momentPreviewNext?.addEventListener("click", () =>
+    updateMomentPreviewImage(momentPreviewIndex + 1),
+  );
+
+  document
+    .querySelectorAll<HTMLElement>("[data-moment-card]")
+    .forEach((card) => {
+      const slideshow =
+        card.querySelector<HTMLElement>("[data-moment-slideshow]") || card;
+      const images = Array.from(
+        slideshow.querySelectorAll<HTMLImageElement>("[data-moment-slide]"),
+      );
+      const dots = Array.from(
+        slideshow.querySelectorAll<HTMLButtonElement>("[data-moment-dot]"),
+      );
+      const previous = slideshow.querySelector<HTMLButtonElement>(
+        '[data-moment-action="prev"]',
+      );
+      const next = slideshow.querySelector<HTMLButtonElement>(
+        '[data-moment-action="next"]',
+      );
+      let activeIndex = 0;
+
+      const setActiveImage = (nextIndex: number) => {
+        if (!images.length) return;
+
+        activeIndex = (nextIndex + images.length) % images.length;
+
+        images.forEach((image, imageIndex) => {
+          const isActive = imageIndex === activeIndex;
+          image.classList.toggle("opacity-100", isActive);
+          image.classList.toggle("opacity-0", !isActive);
+          image.setAttribute("aria-hidden", isActive ? "false" : "true");
+        });
+
+        dots.forEach((dot, dotIndex) => {
+          const isActive = dotIndex === activeIndex;
+          dot.classList.toggle("bg-[var(--color-mint)]", isActive);
+          dot.classList.toggle("bg-[var(--color-navy-deep)]/70", !isActive);
+          dot.setAttribute("aria-current", isActive ? "true" : "false");
+        });
+      };
+
+      previous?.addEventListener("click", (event) => {
+        event.stopPropagation();
+        setActiveImage(activeIndex - 1);
+      });
+      next?.addEventListener("click", (event) => {
+        event.stopPropagation();
+        setActiveImage(activeIndex + 1);
+      });
+      dots.forEach((dot, dotIndex) => {
+        dot.addEventListener("click", (event) => {
+          event.stopPropagation();
+          setActiveImage(dotIndex);
+        });
+      });
+
+      card.addEventListener("click", () =>
+        openMomentPreview(card, activeIndex),
+      );
+      card.addEventListener("keydown", (event) => {
+        if (event.key !== "Enter" && event.key !== " ") return;
+
+        event.preventDefault();
+        openMomentPreview(card, activeIndex);
+      });
+    });
+
+  document.addEventListener("keydown", (event) => {
+    if (
+      event.key === "Escape" &&
+      momentPreview &&
+      !momentPreview.classList.contains("hidden")
+    ) {
+      closeMomentPreview();
+    }
+  });
+</script>

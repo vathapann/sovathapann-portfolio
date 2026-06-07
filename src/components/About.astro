@@ -1,0 +1,27 @@
+---
+import { about } from '../data/portfolio';
+---
+
+<section id="about" class="mx-auto max-w-2xl py-16 sm:py-20" aria-labelledby="about-heading">
+  <h2 id="about-heading" class="section-heading" data-num="01">About me</h2>
+
+  <div class="space-y-4 text-base leading-relaxed text-[var(--color-slate-dark)]">
+    {about.paragraphs.map((p) => <p set:html={p} />)}
+
+    <ul
+      class="mt-2 grid grid-cols-2 gap-x-6 gap-y-2 font-mono text-sm text-[var(--color-slate-dark)]"
+      aria-label="Technologies I use daily"
+    >
+      {
+        about.skills.map((skill) => (
+          <li class="flex items-center gap-2">
+            <span class="text-[var(--color-mint)]" aria-hidden="true">
+              ▹
+            </span>
+            <span>{skill}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
