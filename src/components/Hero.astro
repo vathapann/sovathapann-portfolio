@@ -3,9 +3,12 @@ import { hero, site } from "../data/portfolio";
 
 const heroContent = hero as typeof hero & {
   greeting?: string;
+  tagline?: string;
   intro?: string;
   primaryCtaHref?: string;
   primaryCtaLabel?: string;
+  blogCtaLabel?: string;
+  blogCtaHref?: string;
 };
 ---
 
@@ -66,5 +69,12 @@ const heroContent = hero as typeof hero & {
     >
       View resume
     </a>
+    {
+      heroContent.blogCtaHref && heroContent.blogCtaLabel && (
+        <a href={heroContent.blogCtaHref} class="btn-ghost">
+          {heroContent.blogCtaLabel}
+        </a>
+      )
+    }
   </div>
 </section>

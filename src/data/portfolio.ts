@@ -6,7 +6,7 @@ export const site = {
   fullName: "Sovatha Pann",
   profileImage: "/images/profile-pic.jpeg",
   profileImageAlt: "Portrait of Sovatha Pann",
-  title: "Full-stack engineer | DevOps engineer",
+  title: "Full-stack developer | DevOps engineer",
   tagline:
     "I build reliable full systems and ship infrastructure for high-traffic products.",
   location: "Sydney, Australia",
@@ -23,10 +23,13 @@ export const site = {
 export const hero = {
   // greeting: "Hi, my name is",
   name: "Sovatha Pann",
-  tagline: "Full-stack developer / DevOps Engineer.",
-  // intro: `I'm a Sydney-based engineer focused on full-stack development and platform engineering. Currently finishing a Master of IT at UTS while looking for full-stack and DevOps roles in Australia.`,
+  // tagline:
+    // "🎓 Currently pursuing a Master's in IT at UTS (Sydney, Australia)\n",
+  intro: `I'm a Sydney-based, currently finishing a Master of IT @UTS while looking for full-stack and DevOps roles in Australia.`,
   primaryCtaLabel: "See my work",
   primaryCtaHref: "#projects",
+  blogCtaLabel: "Read my blog",
+  blogCtaHref: "/blog",
 };
 
 export const about = {
@@ -359,6 +362,6 @@ export const navLinks = [
   { label: "Moments", href: "#moments" },
   { label: "Education", href: "#education" },
   { label: "Work", href: "#projects" },
-  { label: "Contact", href: "#contact" },
   { label: "Blog", href: "/blog" },
+  { label: "Contact", href: "#contact" },
 ] as const;
