@@ -1,0 +1,114 @@
+<svg width="1584" height="396" viewBox="0 0 1584 396" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Subtle grid background -->
+    <pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse">
+      <path d="M 36 0 L 0 0 0 36" fill="none" stroke="#172029" stroke-width="0.7"/>
+    </pattern>
+    <!-- Amber radial glow from left -->
+    <radialGradient id="glow" cx="30%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#f4b860" stop-opacity="0.07"/>
+      <stop offset="100%" stop-color="#0f1419" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Right fade for the decorative text -->
+    <linearGradient id="fadeRight" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0f1419" stop-opacity="0"/>
+      <stop offset="40%" stop-color="#0f1419" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#0f1419" stop-opacity="0.9"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Base background -->
+  <rect width="1584" height="396" fill="#0f1419"/>
+  <!-- Grid overlay -->
+  <rect width="1584" height="396" fill="url(#grid)"/>
+  <!-- Amber glow -->
+  <rect width="1584" height="396" fill="url(#glow)"/>
+
+  <!-- Large decorative code brackets background (right side, faded) -->
+  <text x="980" y="340"
+    font-family="'JetBrains Mono', 'Fira Code', monospace"
+    font-size="340" font-weight="700"
+    fill="#172029"
+    opacity="0.5">&lt;/&gt;</text>
+  <!-- Fade overlay to blend right edge -->
+  <rect x="980" y="0" width="604" height="396" fill="url(#fadeRight)"/>
+
+  <!-- Amber left accent bar -->
+  <rect x="64" y="80" width="3" height="160" rx="1.5" fill="#f4b860"/>
+
+  <!-- Top thin accent line -->
+  <rect x="0" y="0" width="1584" height="2" fill="#f4b860" opacity="0.2"/>
+
+  <!-- NAME -->
+  <text x="90" y="110"
+    font-family="'Inter', 'Helvetica Neue', Arial, sans-serif"
+    font-size="66" font-weight="700"
+    fill="#f4f7fa"
+    letter-spacing="-1.5">Sovatha Pann</text>
+
+  <!-- TITLE -->
+  <text x="90" y="155"
+    font-family="'Inter', 'Helvetica Neue', Arial, sans-serif"
+    font-size="26" font-weight="500"
+    fill="#f4b860"
+    letter-spacing="-0.2">Full-stack Developer  ·  DevOps Engineer</text>
+
+  <!-- LOCATION -->
+  <!-- pin icon -->
+  <circle cx="97" cy="182" r="5" fill="none" stroke="#65717e" stroke-width="1.5"/>
+  <line x1="97" y1="197" x2="97" y2="187" stroke="#65717e" stroke-width="1.5" stroke-linecap="round"/>
+  <text x="112" y="195"
+    font-family="'Inter', 'Helvetica Neue', Arial, sans-serif"
+    font-size="18"
+    fill="#65717e">Sydney, Australia</text>
+
+  <!-- WEBSITE -->
+  <text x="1335" y="370"
+    font-family="'JetBrains Mono', 'Fira Code', monospace"
+    font-size="20"
+    fill="#f4b860"
+    opacity="0.6">sovathapann.site</text>
+
+  <!-- Vertical divider -->
+  <line x1="830" y1="60" x2="830" y2="336" stroke="#263241" stroke-width="1"/>
+
+  <!-- TECH STACK SECTION -->
+  <text x="878" y="80"
+    font-family="'JetBrains Mono', 'Fira Code', monospace"
+    font-size="16" fill="#f4b860" opacity="0.65">// how i work</text>
+
+  <!-- Row 1 -->
+  <text x="900" y="137"
+    font-family="'JetBrains Mono', 'Fira Code', monospace"
+    font-size="22" fill="#f4b860" opacity="0.8">→</text>
+  <text x="934" y="137"
+    font-family="'JetBrains Mono', 'Fira Code', monospace"
+    font-size="22" fill="#b8c2cc">design backend systems end-to-end</text>
+
+  <!-- Row 2 -->
+  <text x="900" y="187"
+    font-family="'JetBrains Mono', 'Fira Code', monospace"
+    font-size="22" fill="#f4b860" opacity="0.8">→</text>
+  <text x="934" y="187"
+    font-family="'JetBrains Mono', 'Fira Code', monospace"
+    font-size="22" fill="#b8c2cc">automate delivery — CI/CD, IaC</text>
+
+  <!-- Row 3 -->
+  <text x="900" y="237"
+    font-family="'JetBrains Mono', 'Fira Code', monospace"
+    font-size="22" fill="#f4b860" opacity="0.8">→</text>
+  <text x="934" y="237"
+    font-family="'JetBrains Mono', 'Fira Code', monospace"
+    font-size="22" fill="#b8c2cc">operate reliably in production</text>
+
+  <!-- Footer (split into two lines — SVG ignores newlines in text) -->
+  <text x="878" y="288"
+    font-family="'JetBrains Mono', 'Fira Code', monospace"
+    font-size="16" fill="#65717e" opacity="0.6">core: Docker · Postgres · AWS · Linux</text>
+  <text x="878" y="320"
+    font-family="'JetBrains Mono', 'Fira Code', monospace"
+    font-size="16" fill="#65717e" opacity="0.6">// tools are interchangeable. judgment isn't.</text>
+
+  <!-- Bottom thin accent line -->
+  <rect x="0" y="393" width="1584" height="3" fill="#f4b860" opacity="0.25"/>
+</svg>

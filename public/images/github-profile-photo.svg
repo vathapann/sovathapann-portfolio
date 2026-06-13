@@ -1,0 +1,63 @@
+<svg width="460" height="460" viewBox="0 0 460 460" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="circle">
+      <circle cx="230" cy="230" r="228"/>
+    </clipPath>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#172029" stroke-width="0.8"/>
+    </pattern>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f4b860" stop-opacity="0.12"/>
+      <stop offset="70%" stop-color="#0f1419" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="bgGrad" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#172029"/>
+      <stop offset="100%" stop-color="#080b0f"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Square base -->
+  <rect width="460" height="460" fill="#080b0f"/>
+
+  <!-- Everything inside the circle clip -->
+  <g clip-path="url(#circle)">
+    <!-- Background gradient -->
+    <rect width="460" height="460" fill="url(#bgGrad)"/>
+    <!-- Grid -->
+    <rect width="460" height="460" fill="url(#grid)"/>
+    <!-- Center amber glow -->
+    <rect width="460" height="460" fill="url(#glow)"/>
+
+    <!-- Decorative large faded bracket -->
+    <text x="42" y="360"
+      font-family="'SFMono-Regular', Consolas, monospace"
+      font-size="340" font-weight="700"
+      fill="#172029" opacity="0.7">{ }</text>
+
+    <!-- Initials -->
+    <text
+      x="230" y="262"
+      text-anchor="middle"
+      font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
+      font-size="148" font-weight="700"
+      fill="#f4f7fa"
+      letter-spacing="-6">SP</text>
+
+    <!-- Amber underline accent below initials -->
+    <rect x="148" y="278" width="164" height="4" rx="2" fill="#f4b860" opacity="0.7"/>
+
+    <!-- Role label -->
+    <text
+      x="230" y="322"
+      text-anchor="middle"
+      font-family="'SFMono-Regular', Consolas, monospace"
+      font-size="18"
+      fill="#65717e"
+      letter-spacing="1">dev · ops</text>
+  </g>
+
+  <!-- Outer amber ring (drawn outside clip so it sits on top as a border) -->
+  <circle cx="230" cy="230" r="224" fill="none" stroke="#f4b860" stroke-width="2.5" opacity="0.4"/>
+  <!-- Inner subtle ring -->
+  <circle cx="230" cy="230" r="218" fill="none" stroke="#263241" stroke-width="1" opacity="0.6"/>
+</svg>

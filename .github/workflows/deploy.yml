@@ -3,7 +3,9 @@ name: Deploy portfolio to sovathapann.site
 on:
   push:
     branches: [ "main" ]
-  # workflow_dispatch:   # allows the blog-posts repo to trigger a rebuild
+  workflow_dispatch:        # lets you trigger a rebuild manually from the Actions tab
+  repository_dispatch:      # lets the lab (blog content) repo trigger a rebuild on push
+    types: [ blog-content-updated ]
 
 jobs:
   deploy:

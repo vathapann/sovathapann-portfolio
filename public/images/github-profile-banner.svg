@@ -1,0 +1,96 @@
+<svg width="880" height="200" viewBox="0 0 880 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#172029" stroke-width="0.6"/>
+    </pattern>
+    <radialGradient id="glow" cx="28%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#f4b860" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#0f1419" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="fadeRight" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0f1419" stop-opacity="0"/>
+      <stop offset="30%" stop-color="#0f1419" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#0f1419" stop-opacity="0.85"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="880" height="200" fill="#0f1419"/>
+  <rect width="880" height="200" fill="url(#grid)"/>
+  <rect width="880" height="200" fill="url(#glow)"/>
+
+  <!-- Decorative faded brackets (far right) -->
+  <text x="560" y="188"
+    font-family="'SFMono-Regular', Consolas, monospace"
+    font-size="200" font-weight="700"
+    fill="#172029" opacity="0.55">&lt;/&gt;</text>
+  <rect x="560" y="0" width="320" height="200" fill="url(#fadeRight)"/>
+
+  <!-- Top accent line -->
+  <rect x="0" y="0" width="880" height="2" fill="#f4b860" opacity="0.2"/>
+
+  <!-- Left amber accent bar -->
+  <rect x="32" y="38" width="3" height="124" rx="1.5" fill="#f4b860"/>
+
+  <!-- NAME -->
+  <text x="52" y="88"
+    font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
+    font-size="42" font-weight="700"
+    fill="#f4f7fa"
+    letter-spacing="-1">Sovatha Pann</text>
+
+  <!-- TITLE -->
+  <text x="52" y="120"
+    font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
+    font-size="17" font-weight="500"
+    fill="#f4b860"
+    letter-spacing="-0.2">Full-stack Developer  ·  DevOps Engineer</text>
+
+  <!-- LOCATION pin -->
+  <circle cx="58" cy="143" r="4" fill="none" stroke="#65717e" stroke-width="1.3"/>
+  <line x1="58" y1="147" x2="58" y2="152" stroke="#65717e" stroke-width="1.3" stroke-linecap="round"/>
+  <text x="70" y="153"
+    font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
+    font-size="13" fill="#65717e">Sydney, AU</text>
+
+  <!-- Website -->
+  <text x="160" y="153"
+    font-family="'SFMono-Regular', Consolas, monospace"
+    font-size="13" fill="#f4b860" opacity="0.55">sovathapann.site</text>
+
+  <!-- Vertical divider -->
+  <line x1="430" y1="28" x2="430" y2="172" stroke="#263241" stroke-width="1"/>
+
+  <!-- RIGHT SECTION -->
+  <!-- label -->
+  <text x="458" y="54"
+    font-family="'SFMono-Regular', Consolas, monospace"
+    font-size="13" fill="#f4b860" opacity="0.65">// currently</text>
+
+  <!-- Row 1 -->
+  <text x="462" y="88"
+    font-family="'SFMono-Regular', Consolas, monospace"
+    font-size="16" fill="#f4b860" opacity="0.8">→</text>
+  <text x="486" y="88"
+    font-family="'SFMono-Regular', Consolas, monospace"
+    font-size="16" fill="#9aa6b2">MSc IT @ UTS, Sydney</text>
+
+  <!-- Row 2 -->
+  <text x="462" y="118"
+    font-family="'SFMono-Regular', Consolas, monospace"
+    font-size="16" fill="#f4b860" opacity="0.8">→</text>
+  <text x="486" y="118"
+    font-family="'SFMono-Regular', Consolas, monospace"
+    font-size="16" fill="#9aa6b2">open to full-stack &amp; DevOps roles</text>
+
+  <!-- Row 3 -->
+  <text x="462" y="148"
+    font-family="'SFMono-Regular', Consolas, monospace"
+    font-size="16" fill="#f4b860" opacity="0.8">→</text>
+  <text x="486" y="148"
+    font-family="'SFMono-Regular', Consolas, monospace"
+    font-size="16" fill="#9aa6b2">homelab enthusiast · writes on DevOps</text>
+
+  <!-- Bottom accent line -->
+  <rect x="0" y="197" width="880" height="3" fill="#f4b860" opacity="0.25"/>
+</svg>

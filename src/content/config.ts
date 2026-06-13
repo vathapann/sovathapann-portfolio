@@ -5,7 +5,7 @@ const blog = defineCollection({
   loader: githubBlogLoader({
     owner: 'vathapann',
     repo: 'lab',              // GitHub repo: github.com/vathapann/lab
-    branch: 'main',
+    branch: 'blog-post',      // blog content + CI/CD live on the blog-post branch
     directory: 'blog-posts',  // each subfolder inside here is one post
   }),
   schema: z.object({
