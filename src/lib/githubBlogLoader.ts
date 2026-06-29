@@ -19,7 +19,7 @@ export function githubBlogLoader({
 }: Options): Loader {
   return {
     name: 'github-blog-loader',
-    async load({ store, logger }) {
+    async load({ store, logger, parseData }) {
       const headers: Record<string, string> = { Accept: 'application/vnd.github.v3+json' };
 
       const apiBase = `https://api.github.com/repos/${owner}/${repo}/contents`;
@@ -66,9 +66,14 @@ export function githubBlogLoader({
           const { data, content } = matter(raw);
           const html = await marked(content);
 
+          // Run frontmatter through the collection schema so validation and
+          // defaults (e.g. `tags: [].default`) are applied — store.set() alone
+          // would persist the raw frontmatter and skip the schema.
+          const parsedData = await parseData({ id: folder.name, data });
+
           store.set({
             id: folder.name,   // folder name becomes the slug
-            data,
+            data: parsedData,
             body: content,
             rendered: { html },
           });
