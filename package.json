@@ -8,12 +8,15 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
-    "preview": "astro preview --host",
+    "preview": "npm run build && wrangler dev",
     "astro": "astro",
     "format": "prettier --write \"**/*.{astro,ts,tsx,js,jsx,css,md}\"",
-    "format:check": "prettier --check \"**/*.{astro,ts,tsx,js,jsx,css,md}\""
+    "format:check": "prettier --check \"**/*.{astro,ts,tsx,js,jsx,css,md}\"",
+    "deploy": "npm run build && wrangler deploy",
+    "cf-typegen": "wrangler types"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "12",
     "@tailwindcss/vite": "^4.0.0",
     "astro": "^5.0.0",
     "gray-matter": "^4.0.3",
@@ -25,6 +28,7 @@
     "prettier": "^3.3.0",
     "prettier-plugin-astro": "^0.14.0",
     "prettier-plugin-tailwindcss": "^0.6.0",
-    "typescript": "^5.6.0"
+    "typescript": "^5.6.0",
+    "wrangler": "^4.105.0"
   }
 }
